@@ -1,11 +1,18 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from 'fenyx/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "fenyx/styles/Home.module.css";
+import { useEffect, useState } from "react";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [testEnvVariable, setTestEnvVariable] = useState();
+
+  useEffect(() => {
+    setTestEnvVariable(process.env.NEXT_PUBLIC_TEST_ENV_VARIABLE);
+  }, []);
+
   return (
     <>
       <Head>
@@ -16,6 +23,7 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
+          <div>Hello there {testEnvVariable}</div>
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>src/pages/index.tsx</code>
@@ -26,7 +34,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{' '}
+              By{" "}
               <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
@@ -110,5 +118,5 @@ export default function Home() {
         </div>
       </main>
     </>
-  )
+  );
 }
