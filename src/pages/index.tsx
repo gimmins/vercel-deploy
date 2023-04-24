@@ -10,9 +10,7 @@ export default function Home() {
   const [testEnvVariable, setTestEnvVariable] = useState("");
 
   useEffect(() => {
-    setTestEnvVariable(
-      process.env.NEXT_PUBLIC_TEST_ENV_VARIABLE ?? "testingtesting",
-    );
+    setTestEnvVariable(process.env.NEXT_PUBLIC_TEST_ENV_VARIABLE!);
   }, []);
 
   return (
