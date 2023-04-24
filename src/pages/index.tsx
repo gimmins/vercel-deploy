@@ -9,10 +9,6 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [testEnvVariable, setTestEnvVariable] = useState("");
 
-  useEffect(() => {
-    setTestEnvVariable(process.env.NEXT_PUBLIC_TEST_ENV_VARIABLE!);
-  }, []);
-
   return (
     <>
       <Head>
@@ -23,7 +19,7 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
-          <div>Hello there {testEnvVariable}</div>
+          <div>Hello there {process.env.TEST_ENV_VARIABLE!}</div>
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>src/pages/index.tsx</code>
