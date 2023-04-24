@@ -7,10 +7,12 @@ import { useEffect, useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [testEnvVariable, setTestEnvVariable] = useState();
+  const [testEnvVariable, setTestEnvVariable] = useState("");
 
   useEffect(() => {
-    setTestEnvVariable(process.env.NEXT_PUBLIC_TEST_ENV_VARIABLE);
+    setTestEnvVariable(
+      process.env.NEXT_PUBLIC_TEST_ENV_VARIABLE ?? "testingtesting",
+    );
   }, []);
 
   return (
